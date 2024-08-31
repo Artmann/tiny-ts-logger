@@ -54,7 +54,12 @@ log.error('Failed to process order with orderId=12345.')
 This library has six built-in log levels, listed in the lowest to highest
 severity range.
 
-Trace (10) Debug (20) Info (30) Warn (40) Error (50) Fatal (60)
+- Trace (`10`)
+- Debug (`20`)
+- Info (`30`)
+- Warn (`40`)
+- Error (`50`)
+- Fatal (`60`)
 
 ## Contributing
 

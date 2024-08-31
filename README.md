@@ -1,126 +1,73 @@
-# TSDX User Guide
+<h1>Tiny TypeScript Logger</h2>
 
-Congrats! You just saved yourself hours of work by bootstrapping this project
-with TSDX. Let’s get you oriented with what’s here and how to use it.
+<p>
+  <a href="https://github.com/artmann/tiny-typescript-logger/actions?query=workflow%3AProd+branch%3Amain">
+    <img alt="Github Actions Build Status" src="https://img.shields.io/github/actions/workflow/status/artmann/tiny-typescript-logger/main.yml?label=Prod&style=flat-square" />
+  </a>
 
-> This TSDX setup is meant for developing libraries (not apps!) that can be
-> published to NPM. If you’re looking to build a Node app, you could use
-> `ts-node-dev`, plain `ts-node`, or simple `tsc`.
+  <a href="https://codecov.io/gh/artmann/tiny-typescript-logger">
+    <img alt="Codecov Coverage Status" src="https://img.shields.io/codecov/c/github/artmann/tiny-typescript-logger.svg?style=flat-square" />
+  </a>
 
-> If you’re new to TypeScript, checkout
-> [this handy cheatsheet](https://devhints.io/typescript)
+  <a href="https://twitter.com/acdlite/status/974390255393505280">
+    <img alt="Blazing Fast" src="https://img.shields.io/badge/speed-blazing%20%F0%9F%94%A5-brightgreen.svg?style=flat-square" />
+  </a>
 
-## Commands
+  <a href="https://www.npmjs.com/package/tiny-typescript-logger">
+    <img alt="npm version" src="https://img.shields.io/npm/v/tiny-typescript-logger.svg?style=flat-square" />
+  </a>
 
-TSDX scaffolds your new library inside `/src`.
+  <a href="https://www.npmjs.com/package/tiny-typescript-logger">
+    <img alt="weekly downloads from npm" src="https://img.shields.io/npm/dw/tiny-typescript-logger.svg?style=flat-square" />
+  </a>
 
-To run TSDX, use:
+  <a href="#badge">
+    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" />
+  </a>
 
-```bash
-npm start # or yarn start
+</p>
+
+Get wonderful colorized log messages straight into your terminal.
+
+## Getting Started
+
+Install it using your favorite package manager:
+
+```sh
+npm install tiny-typescript-logger
+yarn install tiny-typescript-logger
+pnpm install tiny-typescript-logger
+
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save
-inside `src` causes a rebuild to `/dist`.
+Log anything your dream desires:
 
-To do a one-off build, use `npm run build` or `yarn build`.
+```ts
+import { log } from 'tiny-typescript-logger'
 
-To run tests, use `npm test` or `yarn test`.
-
-## Configuration
-
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`.
-Adjust the respective fields in `package.json` accordingly.
-
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle Analysis
-
-[`size-limit`](https://github.com/ai/size-limit) is set up to calculate the real
-cost of your library with `npm run size` and visualize the bundle with
-`npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
+log.info('Order processed successfully.')
+log.error('Failed to process order with orderId=12345.')
 ```
 
-### Rollup
+## Log Levels
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple
-rollup configs for various module formats and build settings. See
-[Optimizations](#optimizations) for details.
+This library has six built-in log levels, listed in the lowest to highest
+severity range.
 
-### TypeScript
+Trace (10) Debug (20) Info (30) Warn (40) Error (50) Fatal (60)
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as
-`react` for `jsx`. Adjust according to your needs.
+## Contributing
 
-## Continuous Integration
+Contributions are welcome! If you have suggestions or want to contribute new
+features, open a pull request or file an issue.
 
-### GitHub Actions
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/new-feature`).
+3. Commit your changes (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature/new-feature`).
+5. Open a pull request.
 
-Two actions are added by default:
+## License
 
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes
-  against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request
-  using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx`
-[optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In
-particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
-
-You can also choose to install and use
-[invariant](https://github.com/palmerhq/tsdx#invariant) and
-[warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js`
-accordingly. Please report if any issues are found.
-
-## Named Exports
-
-Per Palmer Group guidelines,
-[always use named exports.](https://github.com/palmerhq/typescript#exports) Code
-split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no
-opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the
-`files` section in your `package.json`, so that it can be imported separately by
-your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file
+for more details.

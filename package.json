@@ -11,7 +11,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "scripts": {
     "analyze": "size-limit --why",
@@ -21,9 +21,11 @@
     "prepare": "tsdx build",
     "size": "size-limit",
     "start": "tsdx watch",
-    "test": "tsdx test"
+    "test": "vitest"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "chalk": "^5.3.0"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -40,16 +42,18 @@
       "limit": "10 KB"
     }
   ],
-  "dependencies": {
-    "chalk": "^5.3.0"
-  },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^11.1.4",
+    "chalk": "^5.3.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.0.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.5",
     "prettier": "^3.3.3",
     "size-limit": "^11.1.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.7.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   }
 }

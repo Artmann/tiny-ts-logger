@@ -1,0 +1,55 @@
+{
+  "name": "tiny-typescript-logger",
+  "author": "Christoffer Artmann",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "analyze": "size-limit --why",
+    "build": "tsdx build",
+    "format": "prettier --write .",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "start": "tsdx watch",
+    "test": "tsdx test"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "module": "dist/tiny-typescript-logger.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/tiny-typescript-logger.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/tiny-typescript-logger.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "dependencies": {
+    "chalk": "^5.3.0"
+  },
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^11.1.4",
+    "husky": "^9.1.5",
+    "prettier": "^3.3.3",
+    "size-limit": "^11.1.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.7.0",
+    "typescript": "^5.5.4"
+  }
+}

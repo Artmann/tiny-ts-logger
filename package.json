@@ -7,6 +7,16 @@
   "engines": {
     "node": ">=14"
   },
+  "keywords": [
+    "typescript",
+    "logger",
+    "logging",
+    "blazing-fast",
+    "terminal",
+    "colorized-logs",
+    "tiny",
+    "log-levels"
+  ],
   "scripts": {
     "analyze": "size-limit --why",
     "build": "tsup",

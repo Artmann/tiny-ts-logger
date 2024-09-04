@@ -58,9 +58,7 @@
       "limit": "10 KB"
     }
   ],
-  "peerDependencies": {
-    "chalk": "^5.3.0"
-  },
+  "peerDependencies": {},
   "dependencies": {
     "chalk": "^5.3.0"
   },

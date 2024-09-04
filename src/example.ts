@@ -14,7 +14,9 @@ log.debug('User data processed, preparing to save to database.')
 
 console.log('\n')
 
-log.info('User successfully created with ID: 2e814b77-31fa-4b90-9f82-9766507b3a7a.')
+log.info(
+  'User successfully created with ID: 2e814b77-31fa-4b90-9f82-9766507b3a7a.'
+)
 
 console.log('\n')
 

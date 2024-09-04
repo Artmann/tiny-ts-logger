@@ -4,9 +4,8 @@ import { Logger } from './logger'
 
 vi.mock('chalk', async () => ({
   default: {
-    hex: () => {
-      return (text: string) => text
-    }
+    dim: (text: string) => text,
+    hex: () => (text: string) => text
   }
 }))
 

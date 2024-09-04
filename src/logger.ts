@@ -25,7 +25,7 @@ export enum Colors {
   PastelBlue = '#ABDEE6',
   PastelGreen = '#97C1A9',
   PastelYellow = '#FDFD96',
-  PastelRed = '#FF6961',
+  PastelRed = '#FF6961'
 }
 
 const logLevelToColor: Record<LogLevel, string> = {
@@ -83,7 +83,9 @@ export class Logger {
     const logLevel = chalk.hex(logLevelColor)(logLevelName.toUpperCase())
     const formattedLogLevel = `[${logLevel}]`
 
-    const formattedMessage = [formattedLogLevel, formattedDate, message].join(' ')
+    const formattedMessage = [formattedLogLevel, formattedDate, message].join(
+      ' '
+    )
 
     return formattedMessage
   }

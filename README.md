@@ -27,6 +27,8 @@
 
 </p>
 
+![Example output](assets/example.png)
+
 Get wonderful colorized log messages straight into your terminal.
 
 ## Getting Started

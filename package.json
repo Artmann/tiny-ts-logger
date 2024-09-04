@@ -21,6 +21,7 @@
     "analyze": "size-limit --why",
     "build": "tsup",
     "check-exports": "attw --pack .",
+    "example": "node --loader ts-node/esm --experimental-specifier-resolution=node src/example.ts",
     "format": "prettier --write .",
     "lint": "eslint ./src",
     "prepare": "tsup",
@@ -65,6 +66,7 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.15.4",
     "@size-limit/preset-small-lib": "^11.1.4",
+    "@types/node": "^22.5.4",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
     "@vitest/coverage-v8": "^2.0.5",
@@ -75,6 +77,7 @@
     "husky": "^9.1.5",
     "prettier": "^3.3.3",
     "size-limit": "^11.1.4",
+    "ts-node": "^10.9.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.7.0",
     "tsup": "^8.2.4",

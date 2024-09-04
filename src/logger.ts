@@ -19,16 +19,22 @@ const logLevelToName: Record<LogLevel, string> = {
 }
 
 export enum Colors {
-  LightGray = '#C7C8CC'
+  Lavender = '#ECD5E3',
+  LightCoral = '#FFB6B6',
+  LightGray = '#f1f5f9',
+  PastelBlue = '#ABDEE6',
+  PastelGreen = '#97C1A9',
+  PastelYellow = '#FDFD96',
+  PastelRed = '#FF6961',
 }
 
 const logLevelToColor: Record<LogLevel, string> = {
-  [LogLevel.Trace]: Colors.LightGray,
-  [LogLevel.Debug]: Colors.LightGray,
-  [LogLevel.Info]: Colors.LightGray,
-  [LogLevel.Warn]: Colors.LightGray,
-  [LogLevel.Error]: Colors.LightGray,
-  [LogLevel.Fatal]: Colors.LightGray
+  [LogLevel.Trace]: Colors.Lavender,
+  [LogLevel.Debug]: Colors.PastelBlue,
+  [LogLevel.Info]: Colors.PastelGreen,
+  [LogLevel.Warn]: Colors.PastelYellow,
+  [LogLevel.Error]: Colors.LightCoral,
+  [LogLevel.Fatal]: Colors.PastelRed
 }
 
 export class Logger {
@@ -55,9 +61,9 @@ export class Logger {
 
     const message = this.isString(items[0]) ? items.shift() : ''
 
-    const formatedMessage = this.formatMessage(level, message)
+    const formattedMessage = this.formatMessage(level, message)
 
-    console.log(formatedMessage, ...items)
+    console.log(formattedMessage, ...items)
   }
 
   trace(...items: any[]): void {
@@ -70,16 +76,16 @@ export class Logger {
 
   private formatMessage(level: LogLevel, message: string): string {
     const date = new Date().toISOString()
-    const formatedDate = chalk.hex(Colors.LightGray)(date)
+    const formattedDate = chalk.dim(date)
 
     const logLevelName = logLevelToName[level] ?? 'unknown'
     const logLevelColor = logLevelToColor[level] ?? Colors.LightGray
     const logLevel = chalk.hex(logLevelColor)(logLevelName.toUpperCase())
-    const formatedLogLevel = `[${logLevel}]`
+    const formattedLogLevel = `[${logLevel}]`
 
-    const formatedMessage = [formatedLogLevel, formatedDate, message].join(' ')
+    const formattedMessage = [formattedLogLevel, formattedDate, message].join(' ')
 
-    return formatedMessage
+    return formattedMessage
   }
 
   private isString(value: any): value is string {

@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "keywords": [
     "typescript",
@@ -61,7 +61,7 @@
   "peerDependencies": {
     "chalk": "^5.3.0"
   },
-  "dependecies": {
+  "dependencies": {
     "chalk": "^5.3.0"
   },
   "devDependencies": {
@@ -69,6 +69,7 @@
     "@size-limit/preset-small-lib": "^11.1.4",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
     "@typescript-eslint/parser": "^8.3.0",
+    "@vitest/coverage-v8": "^2.0.5",
     "cross-env": "^7.0.3",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
@@ -81,8 +82,5 @@
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
-  },
-  "dependencies": {
-    "@vitest/coverage-v8": "^2.0.5"
   }
 }

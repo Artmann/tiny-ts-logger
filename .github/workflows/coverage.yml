@@ -1,5 +1,7 @@
 name: Coverage
 on: [push]
+env:
+  FORCE_COLOR: 2
 jobs:
   build:
     name: Test Coverage

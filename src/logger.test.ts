@@ -13,7 +13,7 @@ vi.mock('chalk', async () => ({
 describe('Logger', () => {
   beforeEach(() => {
     vi.useFakeTimers()
-    vi.setSystemTime(new Date(2024, 8, 31))
+    vi.setSystemTime(new Date('2024-09-30T22:00:00.000Z'))
   })
 
   afterEach(() => {

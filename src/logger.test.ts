@@ -1,12 +1,23 @@
-import { beforeEach, describe, expect, test, vi } from 'vitest'
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 
-import { Colors, Logger } from './logger'
-import chalk from 'chalk'
+import { Logger } from './logger'
+
+vi.mock('chalk', async () => ({
+  default: {
+    hex: () => {
+      return (text: string) => text
+    }
+  }
+}))
 
 describe('Logger', () => {
   beforeEach(() => {
     vi.useFakeTimers()
     vi.setSystemTime(new Date(2024, 8, 31))
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
   })
 
   test('properly logs trace messages to the console.', () => {
@@ -16,7 +27,7 @@ describe('Logger', () => {
 
     logger.trace('Entering processOrder function with orderId=12345.')
 
-    const expectedMessage = `[${chalk.hex(Colors.LightGray)('TRACE')}] ${chalk.hex(Colors.LightGray)('2024-09-30T22:00:00.000Z')} Entering processOrder function with orderId=12345.`
+    const expectedMessage = `[TRACE] 2024-09-30T22:00:00.000Z Entering processOrder function with orderId=12345.`
 
     expect(spy).toHaveBeenCalledWith(expectedMessage)
   })
@@ -28,7 +39,7 @@ describe('Logger', () => {
 
     logger.debug('Processing order with orderId=12345.')
 
-    const expectedMessage = `[${chalk.hex(Colors.LightGray)('DEBUG')}] ${chalk.hex(Colors.LightGray)('2024-09-30T22:00:00.000Z')} Processing order with orderId=12345.`
+    const expectedMessage = `[DEBUG] 2024-09-30T22:00:00.000Z Processing order with orderId=12345.`
 
     expect(spy).toHaveBeenCalledWith(expectedMessage)
   })
@@ -40,7 +51,7 @@ describe('Logger', () => {
 
     logger.info('Order processed successfully.')
 
-    const expectedMessage = `[${chalk.hex(Colors.LightGray)('INFO')}] ${chalk.hex(Colors.LightGray)('2024-09-30T22:00:00.000Z')} Order processed successfully.`
+    const expectedMessage = `[INFO] 2024-09-30T22:00:00.000Z Order processed successfully.`
 
     expect(spy).toHaveBeenCalledWith(expectedMessage)
   })
@@ -52,7 +63,7 @@ describe('Logger', () => {
 
     logger.warn('Order with orderId=12345 is missing a delivery address.')
 
-    const expectedMessage = `[${chalk.hex(Colors.LightGray)('WARN')}] ${chalk.hex(Colors.LightGray)('2024-09-30T22:00:00.000Z')} Order with orderId=12345 is missing a delivery address.`
+    const expectedMessage = `[WARN] 2024-09-30T22:00:00.000Z Order with orderId=12345 is missing a delivery address.`
 
     expect(spy).toHaveBeenCalledWith(expectedMessage)
   })
@@ -64,7 +75,7 @@ describe('Logger', () => {
 
     logger.error('Failed to process order with orderId=12345.')
 
-    const expectedMessage = `[${chalk.hex(Colors.LightGray)('ERROR')}] ${chalk.hex(Colors.LightGray)('2024-09-30T22:00:00.000Z')} Failed to process order with orderId=12345.`
+    const expectedMessage = `[ERROR] 2024-09-30T22:00:00.000Z Failed to process order with orderId=12345.`
 
     expect(spy).toHaveBeenCalledWith(expectedMessage)
   })
@@ -76,7 +87,7 @@ describe('Logger', () => {
 
     logger.fatal('Failed to start the application.')
 
-    const expectedMessage = `[${chalk.hex(Colors.LightGray)('FATAL')}] ${chalk.hex(Colors.LightGray)('2024-09-30T22:00:00.000Z')} Failed to start the application.`
+    const expectedMessage = `[FATAL] 2024-09-30T22:00:00.000Z Failed to start the application.`
 
     expect(spy).toHaveBeenCalledWith(expectedMessage)
   })
@@ -98,7 +109,7 @@ describe('Logger', () => {
 
     logger.info('Order processed successfully.', 'orderId=12345')
 
-    const expectedMessage = `[${chalk.hex(Colors.LightGray)('INFO')}] ${chalk.hex(Colors.LightGray)('2024-09-30T22:00:00.000Z')} Order processed successfully.`
+    const expectedMessage = `[INFO] 2024-09-30T22:00:00.000Z Order processed successfully.`
 
     expect(spy).toHaveBeenCalledWith(expectedMessage, 'orderId=12345')
   })
@@ -111,7 +122,7 @@ describe('Logger', () => {
     logger.info({ orderId: 12345 }, 'Order processed successfully.')
 
     expect(spy).toHaveBeenCalledWith(
-      `[${chalk.hex(Colors.LightGray)('INFO')}] ${chalk.hex(Colors.LightGray)('2024-09-30T22:00:00.000Z')} `,
+      `[INFO] 2024-09-30T22:00:00.000Z `,
       { orderId: 12345 },
       'Order processed successfully.'
     )

@@ -1,7 +1,5 @@
 name: CI
 on: [push]
-env:
-  FORCE_COLOR: 2
 jobs:
   build:
     name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
